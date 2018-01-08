@@ -37,6 +37,25 @@ export class SettingsComponent implements OnInit {
       const management_endpoint = protocolField.value + '://' + hostField.value + ':' + managementPortField.value + '/foglamp/';
       localStorage.setItem('MANAGEMENT_URL', management_endpoint);
     }
+    this.reloadApp();
+  }
+
+
+  public resetAppEndpoint(data: any) {
+    let port = data[data.key].port
+    let address = data[data.key].addresses.length > 1 ? data[data.key].addresses[1] : data[data.key].addresses[0];
+
+    // TODO: remove below line when getting protocol from service discovery
+    const protocolField = <HTMLSelectElement>document.getElementById('protocol');
+    const service_endpoint = protocolField.value + '://' + address + ':' + '8081/foglamp/';
+    const management_endpoint = protocolField.value + '://' + address + ':' + port + '/foglamp/';
+    
+    localStorage.setItem('SERVICE_URL', service_endpoint);
+    localStorage.setItem('MANAGEMENT_URL', management_endpoint);
+    this.reloadApp();
+  }
+
+  public reloadApp() {
     location.reload();
     location.href = '';
     this.router.navigate([location.href]);

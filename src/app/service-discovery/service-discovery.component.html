@@ -1,0 +1,25 @@
+<div class="columns">
+  <div *ngFor="let d of serviceData" class="column">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          {{d.key}}
+        </p>
+        <a class="card-header-icon">
+          <button [ngClass]="{'is-primary':(isConnected && connectedButtonId == d.key), 'is-info': (!isConnected || connectedButtonId != d.key)}"
+            class="button" (click)="connectService(d)" [disabled]="(isConnected && connectedButtonId == d.key) ? 'disabled' : null">
+            {{(!isConnected || connectedButtonId != d.key) ? 'Connect' : 'Connected'}}
+          </button>
+        </a>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <b>Port:</b> {{d[d.key].port}}
+        </div>
+        <div class="content">
+          <b>IP Address:</b> {{d[d.key].addresses.length > 1 ? d[d.key].addresses[1] : d[d.key].addresses[0]}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

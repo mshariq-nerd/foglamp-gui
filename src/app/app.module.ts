@@ -42,6 +42,7 @@ import { ChartModalComponent } from './asset-readings/chart-modal/chart-modal.co
 import { AssetSummaryService } from './asset-readings/asset-summary/asset-summary-service';
 import { NumberOnlyDirective } from './directives/number-only.directive';
 import { NgProgressModule } from 'ngx-progressbar';
+import { ServiceDiscoveryComponent } from './service-discovery/service-discovery.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { NgProgressModule } from 'ngx-progressbar';
     ListTasksComponent,
     AssetSummaryComponent,
     ChartModalComponent,
-    NumberOnlyDirective
+    NumberOnlyDirective,
+    ServiceDiscoveryComponent
   ],
   providers: [
     AuthGuard,
